@@ -26,7 +26,7 @@ const Game = ({ checkLetter, gameSettings }) => {
         <h2>Guess the word!</h2>
 
         <h3 className="tip">
-          Word tip: <span>{gameSettings.chosenTopic}</span>
+          Word tip: <span>{gameSettings.chosenTopic.replace("_", " ")}</span>
         </h3>
 
         <div className="remainingGuesses">
