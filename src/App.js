@@ -117,7 +117,7 @@ function App() {
           score: score
         }
       } />}
-      {currentStage == stages[2].name && <GameOver retry={retry} />}
+      {currentStage == stages[2].name && <GameOver retry={retry} score={score} />}
     </div>
   );
 }
