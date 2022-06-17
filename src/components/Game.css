@@ -51,3 +51,7 @@
     background-color: white;
     color: rgb(46, 46, 46);
 }
+
+.remainingGuesses span {
+    font-weight: bold;
+}

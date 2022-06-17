@@ -14,6 +14,10 @@ const Game = ({ checkLetter }) => {
         <h3 className="tip">
           Word tip: <span>#tipGoesHere#</span>
         </h3>
+        
+        <div className="remainingGuesses">
+          Remaining guesses: <span>999</span>
+        </div>
 
         <div className="wordContainer">
           <span className="letter">A</span>
