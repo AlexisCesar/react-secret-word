@@ -1,29 +1,34 @@
 import './Game.css';
 
-const Game = ({ checkLetter }) => {
+const Game = ({ checkLetter, gameSettings }) => {
   return (
     <>
       <div className="game">
-        
+
         <p className="score">
-          Score: <span>999</span>
+          Score: <span>{gameSettings.score}</span>
         </p>
 
         <h2>Guess the word!</h2>
 
         <h3 className="tip">
-          Word tip: <span>#tipGoesHere#</span>
+          Word tip: <span>{gameSettings.chosenTopic}</span>
         </h3>
-        
+
         <div className="remainingGuesses">
-          Remaining guesses: <span>999</span>
+          Remaining guesses: <span>{gameSettings.remainingGuesses}</span>
         </div>
 
         <div className="wordContainer">
-          <span className="letter">A</span>
-          <span className="square"></span>
-          <span className="square"></span>
-          <span className="square"></span>
+          {
+            gameSettings.letters.map((letter, index) => (
+              gameSettings.guessedLetters.includes(letter)
+              ?
+              <span key={index} className="letter">{letter}</span>
+              :
+              <span key={index} className="square"></span>
+            ))
+          }
         </div>
 
         <div className="letterContainer">
@@ -36,9 +41,11 @@ const Game = ({ checkLetter }) => {
 
         <div className="alreadyTriedContainer">
           <p>Already tried:</p>
-          <span>a - </span>
-          <span>b - </span>
-          <span>c</span>
+          {
+            gameSettings.guessedLetters.map((letter, index) => (
+              <span key={index}>{letter} {(index != (gameSettings.guessedLetters.length - 1)) ? "-" : ""} </span>
+            ))
+          }
         </div>
 
       </div>
