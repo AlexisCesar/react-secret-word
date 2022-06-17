@@ -18,6 +18,9 @@ const stages = [
   { id: 3, name: "end" }
 ];
 
+const TOTAL_GUESSES = 3;
+const SCORE_PRIZE = 100;
+
 function App() {
 
   const [currentStage, setCurrentStage] = useState(stages[0].name);
@@ -29,7 +32,7 @@ function App() {
 
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
-  const [remainingGuesses, setRemainingGuesses] = useState(3);
+  const [remainingGuesses, setRemainingGuesses] = useState(TOTAL_GUESSES);
   const [score, setScore] = useState(0);
 
   const pickRandomCategoryAndWord = () => {
@@ -58,10 +61,45 @@ function App() {
   };
 
   const checkLetter = (letter) => {
-    console.log(letter);
+    
+    if(guessedLetters.includes(letter) | wrongLetters.includes(letter)) {
+      return;
+    }
+
+    setGuessedLetters((actualGuessedLetters) => [
+      ...actualGuessedLetters, letter
+    ])
+
+    if(letters.includes(letter)) {
+      setScore(score + SCORE_PRIZE);
+    } else {
+      setRemainingGuesses(remainingGuesses - 1);
+
+      setWrongLetters((actualWrongLetters) => [
+        ...actualWrongLetters,
+        letter
+      ]);
+    }
+
   };
 
+  const clearLetterStates = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  };
+
+  useEffect(() => {
+    if(remainingGuesses <= 0) {
+      clearLetterStates();
+
+      setCurrentStage(stages[2].name);
+    }
+  }, [remainingGuesses]);
+
   const retry = () => {
+    setScore(0);
+    setRemainingGuesses(TOTAL_GUESSES);
+
     setCurrentStage(stages[0].name);
   };
 
