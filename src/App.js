@@ -57,8 +57,8 @@ function App() {
     setCurrentStage(stages[1].name);
   };
 
-  const checkLetter = () => {
-    setCurrentStage(stages[2].name);
+  const checkLetter = (letter) => {
+    console.log(letter);
   };
 
   const retry = () => {

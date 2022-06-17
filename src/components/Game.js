@@ -1,6 +1,20 @@
+import { useState, useRef } from 'react';
 import './Game.css';
 
 const Game = ({ checkLetter, gameSettings }) => {
+
+  const [inputLetter, setInputLetter] = useState("");
+  const inputRef = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    checkLetter(inputLetter);
+
+    setInputLetter("");
+    inputRef.current.focus();
+  }
+
   return (
     <>
       <div className="game">
@@ -33,9 +47,9 @@ const Game = ({ checkLetter, gameSettings }) => {
 
         <div className="letterContainer">
           <p>Try to guess a letter:</p>
-          <form>
-            <input type="text" name='letter' maxLength={1} required />
-            <button className="defaultAppButton" onClick={checkLetter}>Guess</button>
+          <form onSubmit={handleSubmit}>
+            <input type="text" name='letter' maxLength={1} required onChange={(e) => setInputLetter(e.target.value.toUpperCase())} value={inputLetter} autoComplete="off" ref={inputRef} />
+            <button className="defaultAppButton">Guess</button>
           </form>
         </div>
 
