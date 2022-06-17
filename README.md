@@ -1,5 +1,7 @@
 # Secret Word
 
+![preview](https://user-images.githubusercontent.com/42656077/174404460-555612db-43aa-43d8-bf73-f0c7d09ed91a.gif)
+
 🕹 Game where you have to guess the letters of a secret word.
 
 📚 This project is proposed and taught by Matheus Battisti, available on his course at Udemy:
