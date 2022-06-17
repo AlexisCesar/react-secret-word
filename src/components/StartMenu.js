@@ -1,11 +1,11 @@
 import './StartMenu.css';
 
-const StartMenu = () => {
+const StartMenu = ({ startGame }) => {
     return (
         <>
-            <h2 className="mainTitle">Secret Word</h2>
+            <h2>Secret Word</h2>
             <div>Click in the button below to start the game!</div>
-            <button className="startButton">Play Now!</button>
+            <button className="defaultAppButton" onClick={startGame}>Play Now!</button>
         </>
     )
 }

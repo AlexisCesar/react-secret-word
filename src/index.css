@@ -9,7 +9,7 @@ html, body {
   height: 100%;
 }
 
-.startButton {
+.defaultAppButton {
   background-color: rgb(214, 212, 209);
   margin-top: 40px;
   padding: 0 60px;
@@ -23,6 +23,11 @@ html, body {
   font-family: 'Courier New', Courier, monospace;
 }
 
-.startButton:hover {
+.defaultAppButton:hover {
   background-color: rgb(173, 172, 169);
+}
+
+h2 {
+  font-size: 3em;
+  color: rgb(71, 71, 71);
 }
